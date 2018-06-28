@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person'
 
 class App extends Component {
@@ -53,20 +53,8 @@ class App extends Component {
 
   render() {
 
-    const styles = {
-      backgroundColor: 'green',
-      color: 'white',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-      //psudeo selectors
-      // ':hover': {
-      //   backgroundColor: 'lightgreen',
-      //   color: 'black'        
-      // }
-    }
-
     let persons = null;
+    let btnClass = '';
 
     if(this.state.showPersons) {
       persons = (
@@ -85,36 +73,30 @@ class App extends Component {
         }
       </div> 
       );
-
-      styles.backgroundColor = 'red';
-      // styles[':hover'] = {
-      //   backgroundColor: 'salmon',
-      //   color: 'black'        
-      // }
+      btnClass = classes.Red;
     }
 
-    let classes = [];
+    let assignedClasses = [];
     if(this.state.persons.length <= 2) {
-      classes.push('red');
+      assignedClasses.push(classes.red);
     }
     if(this.state.persons.length <= 1) {
-      classes.push('bold');
+      assignedClasses.push(classes.bold);
     }
 
     return (
       // React.createElement('div', {className: 'App'}, React.createElement(
       //   'h1', null, 'Hi, I am a react App'
       // ))
-      // <StyleRoot>
-        <div className="App">
-
+        <div className={classes.App}>
           <h1>Hi, I am a react App</h1>
-          <p className={classes.join(' ')}> This is really working</p>
+          <p className={assignedClasses.join(' ')}> This is really working</p>
 
-          <button style={styles} onClick={this.togglePersonHandler}>Toggle Persons</button>
+          <button 
+            className={btnClass}  
+            onClick={this.togglePersonHandler}>Toggle Persons</button>
           {persons}
         </div>
-      // </StyleRoot>
     );
   }
 }

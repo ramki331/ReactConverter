@@ -58,7 +58,12 @@ class App extends Component {
       color: 'white',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      //psudeo selectors
+      // ':hover': {
+      //   backgroundColor: 'lightgreen',
+      //   color: 'black'        
+      // }
     }
 
     let persons = null;
@@ -82,6 +87,10 @@ class App extends Component {
       );
 
       styles.backgroundColor = 'red';
+      // styles[':hover'] = {
+      //   backgroundColor: 'salmon',
+      //   color: 'black'        
+      // }
     }
 
     let classes = [];
@@ -96,16 +105,18 @@ class App extends Component {
       // React.createElement('div', {className: 'App'}, React.createElement(
       //   'h1', null, 'Hi, I am a react App'
       // ))
-      <div className="App">
+      // <StyleRoot>
+        <div className="App">
 
-        <h1>Hi, I am a react App</h1>
-        <p className={classes.join(' ')}> This is really working</p>
+          <h1>Hi, I am a react App</h1>
+          <p className={classes.join(' ')}> This is really working</p>
 
-        <button style={styles} onClick={this.togglePersonHandler}>Toggle Persons</button>
-        {persons}
-      </div>
+          <button style={styles} onClick={this.togglePersonHandler}>Toggle Persons</button>
+          {persons}
+        </div>
+      // </StyleRoot>
     );
   }
 }
 
-export default App;
+export default App; // higher order component

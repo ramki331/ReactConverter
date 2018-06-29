@@ -1,7 +1,3 @@
-.App {
-  text-align: center;
-}
-
 .red {
   color: red
 }
@@ -13,7 +9,7 @@
 /*
 For every button inside the App component, this style is applied. 
 */
-.App button {
+.Cockpit button {
   border: 1px solid blue;
   padding: 16px;
   background-color: green;
@@ -21,16 +17,16 @@ For every button inside the App component, this style is applied.
   color: white;
 }
 
-.App button:hover {
+.Cockpit button:hover {
   background-color: lightgreen;
   color: black;
 }
 
-.App button.Red {
+.Cockpit button.Red {
   background-color: red;
 }
 
-.App button.Red:hover {
+.Cockpit button.Red:hover {
   background-color: salmon;
   color: black;
 }

@@ -1,19 +1,52 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import Person from './Person/Person';
 
-const persons = (props) => (
-    //we can omit the return statement here, this is a functional component
-    //because it does not need to manage its own state
-    props.persons.map((person, index) => {
-        return (
-          <Person
-            key = {person.id}
-            name = {person.name}
-            age = {person.age}
-            onclick = {() => props.clicked(index)}
-            changed = {(event) => props.changed(event, index)}/>
-        );
-      })
-);
+class Persons extends PureComponent {
 
-export default persons;
+  constructor(props) {
+    super(props);
+    console.log('Persons.js -> in constructor', props)
+  }
+
+  componentWillMount() {
+    console.log('Persons.js -> in componentWillMount')
+  }
+
+  componentDidMount() {
+    console.log('Persons.js -> in componentDidMount')
+  }
+  
+  componentWillReceiveProps(nextprops) {
+    console.log('Person.js -> in componentWillReceiveProps',nextprops)
+  }
+
+  // shouldComponentUpdate(nextprops, nextstate) {
+  //   console.log('Person.js -> in shouldComponentUpdate', nextprops, nextstate)
+  //   return nextprops.persons !== this.props.persons
+  //   //return true;
+  // }
+
+  componentWillUpdate(nextprops, nextstate) {
+    console.log('Person.js -> in componentWillUpdate', nextprops, nextstate)
+  }
+
+  componentDidUpdate() {
+    console.log('Person.js -> in componentDidUpdate')
+  }
+
+  render() {
+    console.log('Persons.js -> in render')
+    return this.props.persons.map((person, index) => {
+      return (
+        <Person
+          key = {person.id}
+          name = {person.name}
+          age = {person.age}
+          onclick = {() => this.props.clicked(index)}
+          changed = {(event) => this.props.changed(event, index)}/>
+      );
+    })
+  }
+}
+
+export default Persons;

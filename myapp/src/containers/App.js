@@ -1,9 +1,39 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Persons/Cockpit/Cockpit';
+import withClass from '../hoc/withClass';
+import Aux from '../hoc/Aux'
 
-class App extends Component {
+class App extends PureComponent {
+  constructor(props) {
+    super(props);
+    console.log('App.js -> in constructor', props)
+  }
+
+  componentWillMount() {
+    console.log('App.js -> in componentWillMount')
+  }
+
+  componentDidMount() {
+    console.log('App.js -> in componentDidMount')
+  }
+
+  // shouldComponentUpdate(nextprops, nextstate) {
+  //   console.log('App.js -> in shouldComponentUpdate', nextprops, nextstate)
+  //   return nextstate.persons !== this.state.persons ||
+  //     nextstate.showPersons !== this.state.showPersons
+  //   //return true;
+  // }
+
+  componentWillUpdate(nextprops, nextstate) {
+    console.log('App.js -> in componentWillUpdate', nextprops, nextstate)
+  }
+
+  componentDidUpdate() {
+    console.log('App.js -> in componentDidUpdate')
+  }
+
   state = {
     persons: [
       {id: 1, name: "RamaKrishna", age: 32},
@@ -53,7 +83,7 @@ class App extends Component {
   }
 
   render() {
-
+    console.log('App.js -> in render')
     let persons = null;
     if(this.state.showPersons) {
       persons = (
@@ -70,16 +100,19 @@ class App extends Component {
       // React.createElement('div', {className: 'App'}, React.createElement(
       //   'h1', null, 'Hi, I am a react App'
       // ))
-        <div className={classes.App}>
+        //<WithClass classes={classes.App}>
+        <Aux>
+          <button onClick={() => {this.setState({showPersons: true})}}>Show Persons</button>
           <Cockpit 
             appTitle = {this.props.title}
-            showPersons = {this.showPersons}
+            showPersons = {this.state.showPersons}
             persons = {this.state.persons}
             toggle={this.togglePersonHandler}/>
           {persons}
-        </div>
+          </Aux>
+        // </WithClass>
     );
   }
 }
 
-export default App; // higher order component
+export default withClass(App, classes.App); // higher order component

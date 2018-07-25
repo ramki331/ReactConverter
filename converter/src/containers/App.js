@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import DisplayConverter from '../components/DisplayConverter/Converter'
 
 class App extends Component {
   render() {
     return (
-      <div className="Converter">
+      <div className={classes.Converter}>
         <h1>Converter</h1>
-        <DisplayConverter />
+        <DisplayConverter class={classes.Converter}/>
       </div>
     );
   }

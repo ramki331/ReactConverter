@@ -1,8 +1,9 @@
 import React from 'react';
+import classes from './DisplayUnit.css'
 
 const DisplayUnit = (props) => {
     return (
-        <div className={props.classes}>
+        <div className={classes.Unit}>
             Unit : Temperature
         </div>
     );

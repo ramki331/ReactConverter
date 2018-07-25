@@ -1,12 +1,21 @@
 import React from 'react';
-import ConvertValue from '../ConvertValue/ConvertValue'
+import ConvertValue from '../ConvertValue/ConvertValue';
+import classes from './ConvertLogic.css';
 
 const ConvertLogic = (props) => {
     return (
-        <div className={props.classes} style={{padding:'15px'}}>
-            <ConvertValue classes="from" measurement="Fahrenheit"/>
-            <div style={{ display: 'inline-block', verticalAlign: 'top', padding: '2px', marginLeft: '6px', marginRight: '6px', width: '10px' }}>=</div>
-            <ConvertValue classes="from" measurement="Celsius"/>
+        <div className={classes.Convert}>
+            <ConvertValue 
+                classes={classes.from} 
+                convert={props.toCelsius} 
+                measurement="Fahrenheit"
+                value={props.fromValue}/>
+            <div className={classes.Seperator}>=</div>
+            <ConvertValue 
+                classes={classes.to} 
+                measurement="Celsius" 
+                convert={props.toFahrenheit}
+                value={props.toValue}/>
         </div>
     );
 }

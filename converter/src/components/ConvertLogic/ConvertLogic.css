@@ -1,0 +1,20 @@
+.Convert {
+    padding: inherit
+}
+
+.Seperator { 
+    display: inline-block;
+    vertical-align: top;
+    padding: 2px;
+    margin-left: 6px;
+    margin-right: 6px;
+    width: 10px; 
+}
+
+.from {
+    display: inline-block
+}
+
+.to {
+    display: inline-block;
+}

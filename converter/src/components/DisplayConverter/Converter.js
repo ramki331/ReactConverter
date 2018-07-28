@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import DisplayUnit from '../DisplayUnit/DisplayUnit'
 import Convert from '../ConvertLogic/ConvertLogic'
-import classes from './Converter.css'
 
 class DisplayConverter extends Component {
 
@@ -37,7 +36,8 @@ class DisplayConverter extends Component {
 
     render() {
         return (
-            <div className={classes.Display}>
+            <div className={this.props.classes}>
+                <h1>Converter</h1>
                 <DisplayUnit />
                 <Convert 
                     toCelsius={this.convertValueToCelsiusFromFahrenheit} 
